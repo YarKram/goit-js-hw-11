@@ -6,16 +6,13 @@ export default class ImagesApiService {
     this.page = 1;
   }
 
-  fetchImages() {
-    console.log(this);
-    return fetch(
+  async fetchImages() {
+    const response = await fetch(
       `https://pixabay.com/api/?key=${API_KEY}&q=${this.searchQuery}&per_page=40&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}`
-    )
-      .then(response => response.json())
-      .then(data => {
-        this.page += 1;
-        return data;
-      });
+    );
+    const imageDataResp = await response.json();
+    this.page += 1;
+    return imageDataResp;
   }
 
   resetPage() {

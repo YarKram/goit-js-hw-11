@@ -36,7 +36,7 @@ function onSubmit(evt) {
 
 function onLoadMore() {
   imagesApi.fetchImages().then(data => {
-    if (data.hits.length === 0) {
+    if (data.hits.length <= 0) {
       refs.loadMoreBtn.style.visibility = 'collapse';
       return Notiflix.Notify.warning(
         `We're sorry, but you've reached the end of search results.`
@@ -46,14 +46,6 @@ function onLoadMore() {
     let lightbox = new SimpleLightbox('.gallery a');
     console.log(lightbox.refresh());
     lightbox.refresh();
-    //     const { height: cardHeight } = document
-    //   .querySelector(".gallery")
-    //   .firstElementChild.getBoundingClientRect();
-
-    // window.scrollBy({
-    //   top: cardHeight * 2,
-    //   behavior: "smooth",
-    // });
   });
 }
 
