@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
 import { refs } from './refs';
+
 import ImagesApiService from './apiService';
 import { renderImage } from './renderImage';
 
@@ -22,6 +23,7 @@ function onSubmit(evt) {
   imagesApi.resetPage();
 
   imagesApi.fetchImages().then(data => {
+    console.log(data);
     if (data.hits.length === 0) {
       return Notiflix.Notify.warning(
         'Sorry, there are no images matching your search query. Please try again.'
